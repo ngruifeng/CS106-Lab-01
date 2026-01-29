@@ -7,8 +7,8 @@
  *   Rating: 1
  */
 int evenBits(void)
-{
-    return 2;
+{   
+    return 0x55 | 0x55 << 8 | 0x55 << 16 | 0x55 << 24 ;
 }
 
 int test_evenBits(void)

@@ -8,9 +8,21 @@
  *   Max ops: 14
  *   Rating: 1
  */
+
+ /*
+ 1100
+ 1010 
+ ------
+ 1001
+
+ */
 int bitMatch(int x, int y)
 {
-    return 2;
+    return (x&y) | (~x&~y);
+
+    /*
+    return ~((x | y) & (~(x&y)));
+    */
 }
 
 int test_bitMatch(int x, int y)

@@ -9,12 +9,12 @@
  */
 int isZero(int x)
 {
-    return 2;
+    return x == 0;
 }
 
 int test_isZero(int x)
 {
-    return x == 0;
+    return !x;
 }
 
 int main(void)

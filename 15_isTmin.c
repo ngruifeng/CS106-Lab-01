@@ -9,7 +9,7 @@
  */
 int isTmin(int x)
 {
-    return 2;
+    return !(x ^ (1 << 31));
 }
 
 int test_isTmin(int x)

@@ -9,7 +9,7 @@
  */
 int bitXor(int x, int y)
 {
-    return 2;
+    return (~((~x) & (~y))) & (~(x & y));
 }
 
 int test_bitXor(int x, int y)
@@ -20,7 +20,7 @@ int test_bitXor(int x, int y)
 int main(void)
 {
     int x = 0;
-    int y = 0;
+    int y = 1;
     printf("expected: %x\n", bitXor(x, y));
     printf("actual  : %x\n", test_bitXor(x, y));
 }

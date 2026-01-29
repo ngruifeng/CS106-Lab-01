@@ -10,7 +10,24 @@
  */
 int fitsShort(int x)
 {
-    return 2;
+    /* Short : 1000 0000 0000 0000 (TMin)
+               ....
+               1111 1111 1111 1111 (-1)
+               0000 0000 0000 0000 (0)
+               0000 0000 0000 0001 (1)
+               0111 1111 1111 1111 (TMax)
+
+       Extend short into int:
+       1111 1111 1111 1111 1000 0000 0000 0000 (Short TMin)
+       ...
+       1111 1111 1111 1111 1111 1111 1111 1111 (-1)
+       0000 0000 0000 0000 0000 0000 0000 0000 (0)
+       0000 0000 0000 0000 0000 0000 0000 0001 (1)
+       ...
+       0000 0000 0000 0000 0111 1111 1111 1111 (Short TMax)
+
+    */
+    return !((x >> 15) ^ (x >> 16));
 }
 
 int test_fitsShort(int x)
@@ -21,7 +38,7 @@ int test_fitsShort(int x)
 
 int main(void)
 {
-    int x = 0;
+    int x = 0x00007fff + 1;
     printf("expected: %x\n", fitsShort(x));
     printf("actual  : %x\n", test_fitsShort(x));
 }
